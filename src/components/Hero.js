@@ -1,4 +1,3 @@
-// src/components/Hero.js
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
@@ -40,20 +39,20 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-6">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center mb-6">
           {/* Profile Image */}
           <motion.img
             src={profileImageURL}
             alt="Profile"
-            className="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-xl transition-transform duration-500 hover:scale-110"
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-blue-500 shadow-xl transition-transform duration-500 hover:scale-110"
             initial={{ scale: 1 }}
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
           />
           {/* Name */}
           <motion.h1
-            className="text-5xl md:text-6xl font-bold mt-4 mb-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-2"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -62,7 +61,7 @@ const Hero = () => {
           </motion.h1>
           {/* Title with Typewriter Effect */}
           <motion.p
-            className="text-xl md:text-2xl mb-8 max-w-xl mx-auto font-medium"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 max-w-xl mx-auto font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -79,7 +78,7 @@ const Hero = () => {
           </motion.p>
           {/* Social Media Links */}
           <motion.div
-            className="flex space-x-6 justify-center mb-8"
+            className="flex flex-wrap justify-center gap-6 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}

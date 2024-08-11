@@ -86,7 +86,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="relative project-card bg-gray-800 text-white p-6 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-500"
+              className="relative project-card bg-gray-800 text-white p-4 md:p-6 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-500"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: index * 0.3 }} // Sequential reveal
@@ -100,63 +100,67 @@ const Projects = () => {
                 className="w-full h-48 object-cover rounded-t-lg transition-transform duration-300"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-white text-lg font-semibold opacity-0 transition-opacity duration-300 hover:opacity-100">{project.title}</p>
+                <p className="text-white text-lg md:text-xl font-semibold opacity-0 transition-opacity duration-300 hover:opacity-100">{project.title}</p>
               </div>
               <div className="relative mt-4 text-center">
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex justify-center space-x-4 mt-4">
+                <p className="text-gray-300 mb-4 text-sm md:text-base">{project.description}</p>
+                <div className="flex flex-wrap justify-center gap-4 mt-4">
                   {project.techStack.map((tech, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
-                      {iconMapping[tech] || <span className="w-6 h-6 text-gray-500">?</span>}
-                      <span className="ml-2 text-gray-400">{tech}</span>
+                      {iconMapping[tech]}
+                      <span className="text-sm md:text-base font-medium">{tech}</span>
                     </div>
                   ))}
                 </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded-lg text-sm md:text-base hover:bg-blue-700 transition-colors"
+                >
+                  View Project
+                </a>
               </div>
             </motion.div>
           ))}
         </motion.div>
-        {selectedProject && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-80">
-            <motion.div
-              className="bg-gray-800 text-white p-8 rounded-lg w-full max-w-lg relative"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <button
-                onClick={handleCloseModal}
-                className="absolute top-2 right-2 text-gray-300 hover:text-white"
-              >
-                &times;
-              </button>
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full h-48 object-cover rounded-t-lg"
-              />
-              <h3 className="text-2xl font-semibold mt-4">{selectedProject.title}</h3>
-              <p className="mt-2 text-gray-300">{selectedProject.description}</p>
-              <a
-                href={selectedProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mt-4 text-blue-400 hover:underline"
-              >
-                View on GitHub
-              </a>
-              <div className="flex justify-center space-x-4 mt-4">
-                {selectedProject.techStack.map((tech, idx) => (
-                  <div key={idx} className="flex items-center space-x-2">
-                    {iconMapping[tech] || <span className="w-6 h-6 text-gray-500">?</span>}
-                    <span className="ml-2 text-gray-400">{tech}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        )}
       </div>
+
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <div className="bg-gray-800 text-white p-6 rounded-lg w-11/12 md:w-1/2 lg:w-1/3 relative">
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-4 right-4 text-white text-2xl"
+            >
+              &times;
+            </button>
+            <h3 className="text-2xl font-bold mb-4">{selectedProject.title}</h3>
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.title}
+              className="w-full h-48 object-cover mb-4 rounded-lg"
+            />
+            <p className="text-sm mb-4">{selectedProject.description}</p>
+            <div className="flex flex-wrap gap-4 mb-4">
+              {selectedProject.techStack.map((tech, idx) => (
+                <div key={idx} className="flex items-center space-x-2">
+                  {iconMapping[tech]}
+                  <span className="text-sm font-medium">{tech}</span>
+                </div>
+              ))}
+            </div>
+            <a
+              href={selectedProject.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-blue-600 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition-colors"
+            >
+              View Project
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

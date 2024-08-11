@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
@@ -7,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="navbar fixed top-0 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-4 py-4 md:px-8 md:py-6 z-50">
+    <nav className="navbar fixed top-0 left-0 w-full bg-gray-900 text-white flex items-center justify-between px-4 py-4 md:px-8 md:py-6 z-50 shadow-md">
       <div className="flex items-center space-x-4">
         <div className="text-2xl font-bold">Gauri Agrawal</div>
       </div>
@@ -53,16 +52,16 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <motion.div
-        className={`fixed top-0 right-0 w-3/4 bg-gray-800 text-white h-full md:hidden transform ${isOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out`}
+        className={`fixed top-0 right-0 w-3/4 sm:w-2/3 md:w-1/2 bg-gray-800 text-white h-full md:hidden transform ${isOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out`}
         initial={{ x: '100%' }}
         animate={{ x: isOpen ? '0%' : '100%' }}
       >
-        <div className="flex flex-col items-center py-6">
+        <div className="flex flex-col items-center py-6 space-y-4">
           <Link
             to="hero"
             smooth={true}
             duration={500}
-            className="py-2 text-xl cursor-pointer hover:underline"
+            className="text-2xl cursor-pointer hover:underline"
             onClick={() => setIsOpen(false)}
           >
             Home
@@ -71,7 +70,7 @@ const Navbar = () => {
             to="skills"
             smooth={true}
             duration={500}
-            className="py-2 text-xl cursor-pointer hover:underline"
+            className="text-2xl cursor-pointer hover:underline"
             onClick={() => setIsOpen(false)}
           >
             Skills
@@ -80,7 +79,7 @@ const Navbar = () => {
             to="projects"
             smooth={true}
             duration={500}
-            className="py-2 text-xl cursor-pointer hover:underline"
+            className="text-2xl cursor-pointer hover:underline"
             onClick={() => setIsOpen(false)}
           >
             Projects
@@ -89,7 +88,7 @@ const Navbar = () => {
             to="contact"
             smooth={true}
             duration={500}
-            className="py-2 text-xl cursor-pointer hover:underline"
+            className="text-2xl cursor-pointer hover:underline"
             onClick={() => setIsOpen(false)}
           >
             Contact
@@ -98,7 +97,7 @@ const Navbar = () => {
             to="resume"
             smooth={true}
             duration={500}
-            className="py-2 text-xl cursor-pointer hover:underline"
+            className="text-2xl cursor-pointer hover:underline"
             onClick={() => setIsOpen(false)}
           >
             Resume
